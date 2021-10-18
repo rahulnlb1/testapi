@@ -1,7 +1,7 @@
 pipelines:
- - name: sleep_pipeline
+ - name: test_api
    steps:
-     - name: S_Bash_0023
+     - name: test_api_1
        type: Bash
        execution:
          onExecute:

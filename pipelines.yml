@@ -7,5 +7,12 @@ pipelines:
          onExecute:
            - export token="eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiIzcTJudHJScTVadkxOakg4T2dILWtnUWJiemZ3SjFvbWdKT0UzYWJ0bXFRIn0.eyJzdWIiOiJqZmZlQDAwMFwvdXNlcnNcL2FkbWluIiwic2NwIjoiYXBwbGllZC1wZXJtaXNzaW9uc1wvYWRtaW4iLCJhdWQiOiJqZnBpcEAqIiwiaXNzIjoiamZmZUAwMDAiLCJpYXQiOjE2MzQ1NjAwNTcsImp0aSI6ImJmMTMwMTJhLTQ4NjgtNGIzYy1iMzE3LWE3YWIzNDdiNTMzMiJ9.WNBorK-pmGwQ_XMvCh3JEF78zXKRUVxXQ3KcclJTf2lPkXhmchuJNR5D1UA_k13i7ME3QURyFnjESW8rtz4wIwlKL4QfDkJUcCjgdMa-OHGYzdufrO2mCU8A-c8Llr7VfKK-m31EgNL_UXyi08bkBA4jGYgpHMybDXuj1d28Lx73c_g6n7NPw1Q0tA00CaqWotNi7ODb338tZj8oJv0knU_zzn0qFNc7c7djB61zbJF1sJl580fhp4tetV1xrA2fUyzTOyMfJBWuhtQ8pA_jda0qN16R9UE5i8PbtyIW3vmBF2d8acFu8ysszZBqPurBfCN4phFyDfqeZrJuiUHq0Q"
            - |
+            oldStep=$(curl -XGET -s -H "Content-Type: application/json" -H "Authorization: Bearer $token" "https://testrahul18102101.jfrogdev.org/pipelines/api/v1/pipelineSteps/1" | jq .latestStepId)
+           - echo "triggering run"
+           - |
             curl -XPOST -s -H "Content-Type: application/json" -H "Authorization: Bearer $token" "https://testrahul18102101.jfrogdev.org/pipelines/api/v1/pipelineSteps/1/trigger" -d "{}"
+           - sleep 10s
+           - |
+            newStep=$(curl -XGET -s -H "Content-Type: application/json" -H "Authorization: Bearer $token" "https://testrahul18102101.jfrogdev.org/pipelines/api/v1/pipelineSteps/1" | jq .latestStepId)
+           - if [  $oldStep -ne $newStep ]; then echo "New step $newStep; fi
            

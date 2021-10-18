@@ -5,5 +5,9 @@ pipelines:
        type: Bash
        execution:
          onExecute:
-           - curl -XPOST -s --fail -H "Content-Type: application/json" -H "Authorization: Bearer ${token}" "https://testrahul18102101.jfrogdev.org/ui/api/v1/pipe/api/v1/pipelineSteps/${stepId}/trigger" -d "{}"
+           - |
+            curl -XPOST -s --fail -H "Content-Type: application/json" 
+            -H "Authorization: Bearer ${token}" 
+            "https://testrahul18102101.jfrogdev.org/ui/api/v1/pipe/api/v1/pipelineSteps/${stepId}/trigger" 
+            -d "{}"
            

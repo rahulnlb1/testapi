@@ -14,5 +14,5 @@ pipelines:
            - sleep 10s
            - |
             newStep=$(curl -XGET -s -H "Content-Type: application/json" -H "Authorization: Bearer $token" "https://testrahul18102101.jfrogdev.org/pipelines/api/v1/pipelineSteps/1" | jq .latestStepId)
-           - if [  $oldStep -ne $newStep ]; then echo "New step $newStep; fi
+           - if [  $oldStep -ne $newStep ]; then echo "New step $newStep"; fi
            

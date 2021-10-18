@@ -19,4 +19,8 @@ pipelines:
             runId=$(curl -XGET -s -H "Content-Type: application/json" -H "Authorization: Bearer $token" "https://testrahul18102101.jfrogdev.org/pipelines/api/v1/steps/$newStep" | jq .runId)
            - |
             echo "Run id: $runId"
+           - |
+            runNumber=$(curl -XGET -s -H "Content-Type: application/json" -H "Authorization: Bearer $token" "https://testrahul18102101.jfrogdev.org/pipelines/api/v1/runs/$runId" | jq .runNumber)
+           - |
+            echo "Run number: $runNumber"
            

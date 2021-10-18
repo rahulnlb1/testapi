@@ -7,5 +7,5 @@ pipelines:
          onExecute:
            - echo $builder_api_token
            - |
-            curl -XPOST -s --fail -H "Content-Type: application/json" -H "Authorization: Bearer $builder_api_token" "https://testrahul18102101.jfrogdev.org/ui/api/v1/pipe/api/v1/pipelineSteps/1/trigger" -d "{}"
+            curl -XPOST -s --fail -H "Content-Type: application/json" -H "Authorization: Bearer $builder_api_token" "https://testrahul18102101.jfrogdev.org/pipelines/api/v1/pipelineSteps/1/trigger" -d "{}"
            
